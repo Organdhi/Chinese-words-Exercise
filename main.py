@@ -7,8 +7,12 @@ import pygame
 
 def play_audio(text):
     """テキストから音声を生成し、再生する"""
+    # 「~」を削除してから音声生成（プレースホルダーは発音不要）
+    clean_text=text
+    clean_text = text.replace('～', '')
+    
     # gTTSで中国語(簡体字)の音声を生成
-    tts = gTTS(text=text, lang='zh-cn')
+    tts = gTTS(text=clean_text, lang='zh-cn')
     filename = "temp_audio.mp3"
     tts.save(filename)
     
@@ -70,11 +74,23 @@ def main():
         # 音声を再生
         play_audio(word['zh'])
         
-        # 次の問題へ進むための入力待ち
-        if i < num_questions:
-            input("Enterキーを押すと次の問題が再生されます...")
-        else:
-            input("Enterキーを押すと答え合わせに進みます...")
+        # キー入力で制御
+        while True:
+            if i < num_questions:
+                print("操作: '1' = もう一度再生, 'Enter' または '0' = 次へ")
+                key = input("入力してください: ").strip()
+            else:
+                print("操作: '1' = もう一度再生, 'Enter' または '0' = 答え合わせへ")
+                key = input("入力してください: ").strip()
+            
+            if key == '1':
+                print(f"問題 {i}: (音声再生中...)")
+                play_audio(word['zh'])
+            elif key == '' or key == '0':
+                # Enterまたは0で次の問題へ
+                break
+            else:
+                print("'1', 'Enter', または '0' を入力してください。")
 
     # 4. 答え合わせの出力
     print("\n--- 答え合わせ ---")
