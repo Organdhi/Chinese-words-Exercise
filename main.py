@@ -40,9 +40,9 @@ def main():
         play_word_audio(audio_dir, idx + 1, word['zh'])
         
         if i < num_questions:
-            prompt_text="Enterキーで次の問題へ，1で音声をもう一度再生"
+            prompt_text="Enterキーで次の問題へ，1で音声をもう一度再生>"
         else:
-            prompt_text="Enterキーで答え合わせへ，1で音声をもう一度再生"
+            prompt_text="Enterキーで答え合わせへ，1で音声をもう一度再生>"
         
         while True:
             player_input = input(prompt_text)
