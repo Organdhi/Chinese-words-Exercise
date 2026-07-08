@@ -11,7 +11,8 @@ def play_word_audio(audio_dir, word_id, word_zh):
     if not os.path.exists(filepath):
         print(f"  -> 音声ファイルをダウンロード中... ({word_zh})")
         try:
-            tts = gTTS(text=word_zh, lang='zh-cn')
+            clean_text = word_zh.replace('～', '')
+            tts = gTTS(text=clean_text, lang='zh-cn')
             tts.save(filepath)
             # 連続でダウンロードが発生した場合のAPI制限対策
             time.sleep(0.3) 
