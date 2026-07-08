@@ -57,7 +57,7 @@ def load_and_prepare_env(filename):
             needs_clear = True
 
     if needs_clear:
-        print(f"\n[更新検知] {filename} の新規作成または更新を検知しました。音声データを初期化します。")
+        #新規作成または更新のため，音声データを初期化
         if os.path.exists(audio_dir):
             shutil.rmtree(audio_dir) # 既存の音声をすべて削除
         os.makedirs(audio_dir, exist_ok=True)

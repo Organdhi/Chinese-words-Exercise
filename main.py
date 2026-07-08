@@ -40,16 +40,23 @@ def main():
         play_word_audio(audio_dir, idx + 1, word['zh'])
         
         if i < num_questions:
-            input("Enterキーを押すと次の問題へ進みます...")
+            prompt_text="Enterキーで次の問題へ，1で音声をもう一度再生"
         else:
-            input("Enterキーを押すと答え合わせに進みます...")
+            prompt_text="Enterキーで答え合わせへ，1で音声をもう一度再生"
+        
+        while True:
+            player_input = input(prompt_text)
+            if player_input =="1":
+                play_word_audio(audio_dir, idx + 1, word['zh'])
+            else:
+                break
 
     # 4. 答え合わせの出力
     print("\n--- 答え合わせ ---")
     for i, word in asked_words:
         print(f"問題 {i}")
         print(f"ピンイン: {word['pinyin']}")
-        print(f"中国語: \033[1m\033[93m【 {word['zh']} 】\033[0m")
+        print(f"中国語: {word['zh']}")
         print(f"日本語: {word['ja']}")
         print("-" * 25)
 

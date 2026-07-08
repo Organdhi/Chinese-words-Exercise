@@ -9,7 +9,6 @@ def play_word_audio(audio_dir, word_id, word_zh):
 
     # 1. オンデマンドダウンロード処理
     if not os.path.exists(filepath):
-        print(f"  -> 音声ファイルをダウンロード中... ({word_zh})")
         try:
             clean_text = word_zh.replace('～', '')
             tts = gTTS(text=clean_text, lang='zh-cn')
