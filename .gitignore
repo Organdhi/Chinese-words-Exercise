@@ -1,0 +1,11 @@
+# 1. Pythonのキャッシュファイル
+__pycache__/
+*.pyc
+
+# 2. アプリケーションが自動生成するデータディレクトリ
+audio/
+log/
+
+# 3. OSが自動生成する不要なファイル (Mac / Windows)
+.DS_Store
+Thumbs.db
